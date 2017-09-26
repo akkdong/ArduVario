@@ -1,0 +1,111 @@
+*
+*
+G04 PADS 9.5 Build Number: 522968 generated Gerber (RS-274-X) file*
+G04 PC Version=2.1*
+*
+%IN "Arudino_VarioShield_UNO"*%
+*
+%MOIN*%
+*
+%FSLAX35Y35*%
+*
+*
+*
+*
+G04 PC Standard Apertures*
+*
+*
+G04 Thermal Relief Aperture macro.*
+%AMTER*
+1,1,$1,0,0*
+1,0,$1-$2,0,0*
+21,0,$3,$4,0,0,45*
+21,0,$3,$4,0,0,135*
+%
+*
+*
+G04 Annular Aperture macro.*
+%AMANN*
+1,1,$1,0,0*
+1,0,$2,0,0*
+%
+*
+*
+G04 Odd Aperture macro.*
+%AMODD*
+1,1,$1,0,0*
+1,0,$1-0.005,0,0*
+%
+*
+*
+G04 PC Custom Aperture Macros*
+*
+*
+*
+*
+*
+*
+G04 PC Aperture Table*
+*
+%ADD010C,0.001*%
+%ADD024R,0.036X0.036*%
+%ADD030R,0.03X0.038*%
+%ADD031R,0.038X0.03*%
+%ADD043R,0.036X0.05*%
+*
+*
+*
+*
+G04 PC Circuitry*
+G04 Layer Name Arudino_VarioShield_UNO - circuitry*
+%LPD*%
+*
+*
+G04 PC Custom Flashes*
+G04 Layer Name Arudino_VarioShield_UNO - flashes*
+%LPD*%
+*
+*
+G04 PC Circuitry*
+G04 Layer Name Arudino_VarioShield_UNO - circuitry*
+%LPD*%
+*
+G54D10*
+G54D24*
+G01X286801Y247207D03*
+X294301D03*
+X268691D03*
+X276191D03*
+G54D30*
+X313780Y275640D03*
+Y281840D03*
+X305512Y275640D03*
+Y281840D03*
+G54D31*
+X199163Y259902D03*
+X192963D03*
+X159006Y270079D03*
+X152806D03*
+X337845Y222047D03*
+X344045D03*
+X199163Y249902D03*
+X192963D03*
+X159006Y259055D03*
+X152806D03*
+X159006Y243307D03*
+X152806D03*
+X199163Y239902D03*
+X192963D03*
+X293651Y256693D03*
+X287451D03*
+X269341D03*
+X275541D03*
+X293651Y229134D03*
+X287451D03*
+X269341D03*
+X275541D03*
+G54D43*
+X290551Y239207D03*
+X272441D03*
+X0Y0D02*
+M02*
