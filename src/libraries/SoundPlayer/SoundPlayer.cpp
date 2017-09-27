@@ -115,7 +115,6 @@ int SoundPlayer::updateCheck()
 		//
 		//return 0;
 		
-		//Serial.println("play next");
 		return 1;
 	}
 	
@@ -131,12 +130,6 @@ int SoundPlayer::updateCheck()
 			{
 				toneStartTick = now;
 				toneAC(playCurr.tonePtr[toneIndex].freq, volume);
-				
-				//Serial.print("next tone : ");
-				//Serial.print(playCurr.tonePtr[toneIndex].freq);
-				//Serial.print(", ");
-				//Serial.print(playCurr.tonePtr[toneIndex].length);
-				//Serial.println("");
 			}
 			else
 			{
@@ -155,18 +148,11 @@ int SoundPlayer::updateCheck()
 					toneIndex = 0;
 					toneStartTick = now;
 					toneAC(playCurr.tonePtr[toneIndex].freq, volume);
-					
-					//Serial.print("play again : ");
-					//Serial.print(playCurr.tonePtr[toneIndex].freq);
-					//Serial.print(", ");
-					//Serial.print(playCurr.tonePtr[toneIndex].length);
-					//Serial.println("");
 				}
 				else // repeatCount > 0 && playerCount == repeatCount
 				{
 					playCurr.playType = PLAY_NONE; // stop play
 					toneAC(); // mute
-					//Serial.println("stop play");
 					
 					return 1; // play next
 				}
@@ -182,8 +168,6 @@ int SoundPlayer::updateCheck()
 	}
 	else
 	{
-		//Serial.println("infinite tone");
-		
 		// mute, sinking beep ?? length? 0? ?? ?? ??? ??? ?? ??? ????.
 		if (playNext.playType != PLAY_NONE)
 			return 1;
@@ -215,9 +199,4 @@ void SoundPlayer::updateNow()
 	playCount = 0;
 	
 	toneAC(playCurr.tonePtr[toneIndex].freq, volume);
-	//Serial.print("start play : ");
-	//Serial.print(playCurr.tonePtr[toneIndex].freq);
-	//Serial.print(", ");
-	//Serial.print(playCurr.tonePtr[toneIndex].length);
-	//Serial.println("");
 }

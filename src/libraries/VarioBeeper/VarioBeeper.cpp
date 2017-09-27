@@ -84,13 +84,6 @@ void VarioBeeper::setVelocity(double velocity)
 		
 		findTone(velocity, freq, period, duty);		
 		player.setBeep(freq, period, duty);
-		Serial.print("setBeep(");
-		Serial.print(freq);
-		Serial.print(", ");
-		Serial.print(period);
-		Serial.print(", ");
-		Serial.print(duty);
-		Serial.println(")");		
 	}
 	else
 	{
