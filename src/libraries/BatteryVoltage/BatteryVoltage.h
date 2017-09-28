@@ -29,13 +29,13 @@ public:
 	BatteryVoltage();
 	
 public:
-	void		init();
+	void			init();
 	
-	double		getVoltage();
-	void		setVoltage(double volt);
+	double			getVoltage();
+	void			setVoltage(double volt);
 	
 protected:
-	double		mVoltage;
+	volatile double	mVoltage;
 };
 
 

@@ -18,6 +18,7 @@
 #include <FirmwareUpdater.h>
 #include <BatteryVoltage.h>
 #include <VarioBeeper.h>
+#include <SoftwareSerial.h>
 
 
 /*!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!*/
@@ -65,10 +66,10 @@ boolean 		lastSentence = false;
 
 unsigned long 	RMCSentenceTimestamp; //for the speed filter
 double 			RMCSentenceCurrentAlti; //for the speed filter
-unsigned long 	speedFilterTimestamps[VARIOMETER_SPEED_FILTER_SIZE];
-double 			speedFilterSpeedValues[VARIOMETER_SPEED_FILTER_SIZE];
-double 			speedFilterAltiValues[VARIOMETER_SPEED_FILTER_SIZE];
-int8_t 			speedFilterPos = 0;
+//unsigned long 	speedFilterTimestamps[VARIOMETER_SPEED_FILTER_SIZE];
+//double 			speedFilterSpeedValues[VARIOMETER_SPEED_FILTER_SIZE];
+//double 			speedFilterAltiValues[VARIOMETER_SPEED_FILTER_SIZE];
+//int8_t 			speedFilterPos = 0;
 
 #endif //HAVE_GPS
 
