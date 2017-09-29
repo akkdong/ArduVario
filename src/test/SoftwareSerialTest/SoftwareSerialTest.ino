@@ -5,7 +5,7 @@
 #include <NmeaParserEx.h>
 
 
-SoftwareSerial SerialGPS(8, 9);
+SoftwareSerial SerialGPS(8, 5);
 NmeaParserEx nmeaParser(SerialGPS);
 
 void setup()

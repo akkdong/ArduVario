@@ -19,6 +19,7 @@
 #include <BatteryVoltage.h>
 #include <VarioBeeper.h>
 #include <SoftwareSerial.h>
+#include <NmeaParserEx.h>
 
 
 /*!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!*/
@@ -59,6 +60,11 @@ VarioBeeper 	beeper(player);
 /***************/
 /* gps objects */
 /***************/
+
+SoftwareSerial SerialGPS(8, 5);
+NmeaParserEx nmeaParserEx(SerialGPS);
+
+
 #ifdef HAVE_GPS
 
 NmeaParser 		nmeaParser;
@@ -88,6 +94,18 @@ LK8Sentence 	bluetoothNMEA;
 unsigned long 	lastVarioSentenceTimestamp = 0;
 #endif // !HAVE_GPS
 
+static Tone startTone[] = {
+	{ 262, 1000 / 4 }, 
+	{ 196, 1000 / 8 }, 
+	{ 196, 1000 / 8 }, 
+	{ 220, 1000 / 4 }, 
+	{ 196, 1000 / 4 }, 
+	{   0, 1000 / 4 }, 
+	{ 247, 1000 / 4 }, 
+	{ 262, 1000 / 4 },
+	{   0, 1000 / 8 }, 
+};
+
 
 /*-----------------*/
 /*      SETUP      */
@@ -98,6 +116,9 @@ void setup()
 	/* init battery voltage */
 	/***************/
 	battery.init();
+	
+	//
+	delay(1000);
 
 	/************************************/
 	/* init altimeter and accelerometer */
@@ -113,6 +134,8 @@ void setup()
 	/**************************/
 	/* init gps and bluetooth */
 	/**************************/
+	//SerialGPS.begin(9600);
+	
 #ifdef HAVE_GPS
 	serialNmea.begin(GPS_BLUETOOTH_BAUDS, true);
 #else
@@ -139,6 +162,10 @@ void setup()
 				POSITION_MEASURE_STANDARD_DEVIATION,
 				ACCELERATION_MEASURE_STANDARD_DEVIATION,
 				millis());
+				
+	//
+	player.setVolume(10);
+	player.setMelody(&startTone[0], sizeof(startTone) / sizeof(startTone[0]), 1, 0);
 }
 
 void enableflightStartComponents(void);
@@ -171,6 +198,17 @@ void loop()
 	//beeper.update();
 	player.update();
 
+	/*****************/
+	/* update nmea parser */
+	/*****************/
+	//nmeaParserEx.update();
+	//
+	//if (nmeaParserEx.available())
+	//{
+	//	while (nmeaParserEx.available())
+	//		serialNmea.write(nmeaParserEx.read());
+	//}
+	
 	/********************/
 	/* update bluetooth */
 	/********************/
@@ -183,9 +221,9 @@ void loop()
 			serialNmea.write( bluetoothNMEA.get() );
 		}
 		serialNmea.release();
-	}
+	}	
 #else //!HAVE_GPS
-	/* check the last vario nmea sentence */
+	/* check the last vario nmea sentence */	
 	if( millis() - lastVarioSentenceTimestamp > VARIOMETER_SENTENCE_DELAY ) 
 	{
 		lastVarioSentenceTimestamp = millis();

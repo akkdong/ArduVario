@@ -1,0 +1,21 @@
+Arduino UNO(ATMega328) EEPROM size : 1K(400h)
+
+EEPROM Block : Tag(2 byte) + Data(any size)
+
+
+===========+===========+=======+=============+===========
+Block Name        |  Address  |  Tag  |  Data size  | Total size
+-----------+-----------+-------+-------------+-----------
+Accel Calibration | 0x00      | 9806  | sizeof(double) * 3 |
+IGC Header        | 0x30      | 2568  | 512 - 48(0x200 - 0x30) |
+
+
+
+Vario Volume
+Vario Sinking Threshold
+Vario Climbing Threshold
+Vario Velocity Sensitivity
+
+Vario Tone Table(??)
+
+
