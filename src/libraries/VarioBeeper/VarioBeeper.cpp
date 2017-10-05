@@ -17,18 +17,18 @@ struct VarioTone
 
 static VarioTone varioTone[] = 
 {
-	{ -10.00,  200, 100, 100  },
-	{  -3.00,  280, 100, 100  },
-	{  -0.51,  300, 500, 100  },
-	{  -0.50,  200, 800,   5  },
-	{   0.09,  400, 600,  10  },
-	{   0.10,  400, 600,  50  },
-	{   1.16,  550, 552,  52  },
-	{   2.67,  763, 483,  55  },
-	{   4.24,  985, 412,  58  },
-	{   6.00, 1234, 322,  62  },
-	{   8.00, 1517, 241,  66 }, 
-	{  10.00, 1800, 150,  70 },
+	{ -10.00,	 200,	100,	100 }, 
+	{  -3.00,	 280,	100,	100 },
+	{  -0.51,	 300,	500,	100 },
+	{  -0.50,	 200,	800,	  5 },
+	{   0.09,	 400,	600,	 10 },
+	{   0.10,	 640,	600,	 50 },
+	{   1.16,	 880,	552*1.0, 52 },
+	{   2.67,	1180,	483*0.9, 55 },
+	{   4.24,	1400,	412*0.8, 58 },
+	{   6.00,	1580,	322*0.7, 62 },
+	{   8.00,	1750,	241*0.6, 66 },
+	{  10.00,	1900,	150*0.5, 70 },
 };
 
 
@@ -118,10 +118,12 @@ void VarioBeeper::findTone(double velocity, int & freq, int & period, int & duty
 		period = (varioTone[index].period - varioTone[index-1].period) / (varioTone[index].velocity - varioTone[index-1].velocity) * (velocity - varioTone[index-1].velocity) + varioTone[index-1].period;
 		duty = (varioTone[index].duty - varioTone[index-1].duty) / (varioTone[index].velocity - varioTone[index-1].velocity) * (velocity - varioTone[index-1].velocity) + varioTone[index-1].duty;
 	}
-		
-	period = (int)(period * 0.6);
+	
+	//period = (int)(period * 1.0);
 	duty = (int)(period * duty / 100.0);
 	
 	if (period == duty)
 		period = duty = 0; // infinite beepping
+	
+	//Serial.print(freq); Serial.print(", "); Serial.print(period); Serial.print(", "); Serial.println(duty);
 }
