@@ -135,7 +135,6 @@ int SoundPlayer::updateCheck()
 			{
 				// now all tone is played
 				// move next or repeat again ?
-				
 				playCount += 1;
 				
 				if (playCurr.repeatCount == 0 || playCount < playCurr.repeatCount)

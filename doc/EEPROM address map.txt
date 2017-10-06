@@ -19,3 +19,5 @@ Vario Velocity Sensitivity
 Vario Tone Table(??)
 
 
+Kalman filter sigma-p, sigma-a
+

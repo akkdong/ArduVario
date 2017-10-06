@@ -164,7 +164,7 @@ void setup()
 				millis());
 				
 	//
-	player.setVolume(10);
+	player.setVolume(VARIOMETER_BEEP_VOLUME);
 	player.setMelody(&startTone[0], sizeof(startTone) / sizeof(startTone[0]), 1, 0);
 }
 
