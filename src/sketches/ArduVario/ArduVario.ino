@@ -37,6 +37,8 @@
 #define VARIOMETER_STATE_CALIBRATED 		2
 #define VARIOMETER_STATE_FLIGHT_STARTED 	3
 
+#define RESET_BT							8
+
 #ifdef HAVE_GPS
 uint8_t 		variometerState = VARIOMETER_STATE_INITIAL;
 #else
@@ -61,8 +63,8 @@ VarioBeeper 	beeper(player);
 /* gps objects */
 /***************/
 
-SoftwareSerial SerialGPS(8, 5);
-NmeaParserEx nmeaParserEx(SerialGPS);
+//SoftwareSerial SerialGPS(8, 5);
+//NmeaParserEx nmeaParserEx(SerialGPS);
 
 
 #ifdef HAVE_GPS
@@ -119,7 +121,7 @@ void setup()
 	
 	//
 	delay(1000);
-
+	
 	/************************************/
 	/* init altimeter and accelerometer */
 	/************************************/
@@ -141,6 +143,13 @@ void setup()
 #else
 	serialNmea.begin(GPS_BLUETOOTH_BAUDS, false);
 #endif //HAVE_GPS
+
+	// setup BT RESET pin
+	pinMode(RESET_BT, OUTPUT);
+	// Reset BT
+	digitalWrite(RESET_BT, LOW);
+	delay(500);
+	digitalWrite(RESET_BT, HIGH);
 
 	/******************/
 	/* get first data */
